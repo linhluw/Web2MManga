@@ -1,0 +1,71 @@
+﻿@using System.Timers
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+<link href="css/slideshow.css" rel="stylesheet" />
+
+<section class="hero">
+    <div class="container">
+        <div class="slideshow-container">
+            <div class="slide">
+                <img src="@Images[currentIndex]" alt="Slideshow image" />
+            </div>
+
+            <div class="navigation-buttons">
+                <button @onclick="ShowPreviousImage"><span class="arrow_carrot-left"></span></button>
+                <button @onclick="ShowNextImage" class="owl-next"><span class="arrow_carrot-right"></span></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+@code {
+    // List of image URLs or paths
+    private string[] Images = new string[]
+    {
+        "img/hero/hero-1.jpg",
+        "img/hero/ban.jpg"
+    };
+
+    private int currentIndex = 0;
+    private Timer? timer;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        // Start slideshow on page load
+        timer = new Timer(5000); // Change image every 5 seconds
+        timer.Elapsed += (sender, e) =>
+        {
+            InvokeAsync(() =>
+            {
+                currentIndex = (currentIndex + 1) % Images.Length;
+                StateHasChanged(); // Trigger UI update
+            });
+        };
+        timer.Start();
+    }
+
+    private void ShowPreviousImage()
+    {
+        currentIndex--;
+        if (currentIndex < 0)
+        {
+            currentIndex = Images.Length - 1; // Loop back to the last image
+        }
+    }
+
+    private void ShowNextImage()
+    {
+        currentIndex++;
+        if (currentIndex >= Images.Length)
+        {
+            currentIndex = 0; // Loop back to the first image
+        }
+    }
+
+    public void Dispose()
+    {
+        timer?.Stop();
+        timer?.Dispose();
+    }
+}

@@ -1,0 +1,99 @@
+﻿<div class="product__sidebar">
+    <div class="product__sidebar__view">
+        <div class="section-title">
+            <h5>@Title</h5>
+        </div>
+        <div class="filter__gallery">
+            @foreach (var item in lstProduct)
+            {
+                <div class="product__sidebar__view__item set-bg">
+                    <img src="@item.ImageURL" alt="@item.Name" style="width: 100%;" />
+                    <div class="ep">HOT</div>
+                    <div class="view">@item.PublishName</div>
+                    <h5><a href="@item.Name">@item.Name</a></h5>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    [Parameter]
+    public int? CategoryId { get; set; }
+
+    [Parameter]
+    public int? Count { get; set; }
+
+    private List<Product>? lstProduct;
+
+    protected override async Task OnInitializedAsync()
+    {
+        lstProduct = new List<Product>();
+
+
+        lstProduct.Add(new Product
+            {
+                ProductId = 1,
+                Name = "The Seven Deadly Sins: Wrath of the Gods",
+                CategoryName = "Truyện Tranh",
+                ImageURL = "img/sidebar/tv-1.jpg",
+                PublishName = "NXB Kim Đồng"
+            });
+        lstProduct.Add(new Product
+            {
+                ProductId = 2,
+                Name = "Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien",
+                ImageURL = "img/sidebar/tv-2.jpg",
+                PublishName = "NXB Kim Đồng"
+            });
+        lstProduct.Add(new Product
+            {
+                ProductId = 3,
+                Name = "Shingeki no Kyojin Season 3 Part 2",
+                CategoryName = "Truyện Tranh",
+                ImageURL = "img/sidebar/tv-3.jpg",
+                PublishName = "NXB Kim Đồng"
+            });
+        lstProduct.Add(new Product
+            {
+                ProductId = 4,
+                Name = "Fullmetal Alchemist: Brotherhood",
+                CategoryName = "Truyện Tranh",
+                ImageURL = "img/sidebar/tv-4.jpg",
+                PublishName = "NXB Kim Đồng"
+            });
+        lstProduct.Add(new Product
+            {
+                ProductId = 5,
+                Name = "Shiratorizawa Gakuen Koukou",
+                CategoryName = "Truyện Tranh",
+                ImageURL = "img/sidebar/tv-5.jpg",
+                PublishName = "NXB Kim Đồng"
+            });
+
+        await Task.Delay(0);
+    }
+
+    public class Product
+    {
+        public int ProductId { get; set; }
+
+        public string? Name { get; set; }
+
+        public string? TagName { get; set; }
+
+        public string? ImageURL { get; set; }
+
+        public int IsValue { get; set; }
+
+        public string? PublishName { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public string? CategoryName { get; set; }
+
+        public bool IsLimited { get; set; }
+    }
+}
