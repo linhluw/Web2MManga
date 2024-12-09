@@ -802,13 +802,14 @@ ol {
 	top: 10px;
 }
 
-.product__sidebar__view__item h5 {
-	position: absolute;
-	left: 0;
-	bottom: 25px;
-	width: 100%;
-	padding: 0 30px 0 20px;
-}
+	.product__sidebar__view__item h5 {
+		position: absolute;
+		left: 0;
+		bottom: 0px;
+		width: 100%;
+		padding: 15px;
+		background: rgb(11 12 42 / 45%);
+	}
 
 .product__sidebar__view__item h5 a {
 	color: #ffffff;
@@ -827,7 +828,8 @@ ol {
 
 .product__sidebar__comment__item__pic {
 	float: left;
-	margin-right: 15px;
+	margin-right: 5%;
+	width: 30%;
 }
 
 .product__sidebar__comment__item__text {
@@ -849,9 +851,10 @@ ol {
 	display: inline-block;
 }
 
-.product__sidebar__comment__item__text h5 {
-	margin-bottom: 10px;
-}
+	.product__sidebar__comment__item__text h5 {
+		margin-bottom: 10px;
+		font-size: 16px;
+	}
 
 .product__sidebar__comment__item__text h5 a {
 	color: #ffffff;

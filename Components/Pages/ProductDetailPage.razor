@@ -169,7 +169,7 @@
     [Parameter]
     public string? TagProduct { get; set; }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (TagProduct != null)
         {

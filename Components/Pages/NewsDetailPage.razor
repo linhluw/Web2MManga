@@ -186,7 +186,7 @@
     [Parameter]
     public string? TagName { get; set; }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (TagName != null)
         {
